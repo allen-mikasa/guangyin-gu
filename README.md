@@ -8,7 +8,14 @@ Electron 31 + 原生 HTML/CSS/JS，无前端框架、无外部音频文件（环
 
 两种方式任选：
 
-**A. 直接下载**：到 [Releases](../../releases) 下载最新一版的 `光阴蛊-安装包-x.y.z.exe`（NSIS 安装版）或 `光阴蛊-便携版-x.y.z.exe`（绿色单文件，不写注册表）。
+**A. 直接下载**：到 [Releases](../../releases) 下载最新一版
+
+| 资产 | 说明 |
+|---|---|
+| `GuangYinGu-Setup-x.y.z.exe` | NSIS 安装版：可选安装目录，自动创建桌面与开始菜单快捷方式 |
+| `GuangYinGu-Portable-x.y.z.exe` | 绿色单文件：双击即用，不写注册表，适合放 U 盘 |
+
+> 资产名用拉丁字母：GitHub 会把仓库名与资产名里的非 ASCII 字符折成 `-`，所以中文名只出现在应用标题与界面里。
 
 **B. 从源码构建**：
 
