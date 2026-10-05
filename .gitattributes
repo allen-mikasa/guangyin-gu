@@ -1,0 +1,13 @@
+# 统一换行，避免 Windows 检出的 CRLF 造成无意义的整文件差异
+* text=auto eol=lf
+
+# 二进制资源不做换行转换，也不参与文本 diff
+*.ico binary
+*.png binary
+*.exe binary
+*.dll binary
+*.asar binary
+
+# 让 GitHub 的语言统计准确：这些是生成物，不算项目语言
+package-lock.json linguist-generated=true
+build/*.png linguist-generated=true

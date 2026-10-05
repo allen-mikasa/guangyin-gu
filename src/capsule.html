@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';" />
+  <title>光阴蛊·胶囊</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0; width: 210px; height: 52px;
+      background: transparent; overflow: hidden;
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    }
+    .cap {
+      display: flex; align-items: center; gap: 6px;
+      box-sizing: border-box; height: 44px; margin: 4px; padding: 0 8px 0 10px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(21, 29, 41, .94), rgba(13, 20, 30, .94));
+      border: 1px solid rgba(201, 161, 94, .55);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(232, 201, 138, .18);
+      color: #d7e0ea; font-size: 12px; user-select: none; cursor: grab;
+      /* 整条交给系统拖动：由操作系统直接搬窗口，
+         不会出现「自实现拖拽」里指针坐标被窗口位移带偏、越推越往回的问题 */
+      -webkit-app-region: drag;
+    }
+    .cap:active { cursor: grabbing; }
+    .cap-dot {
+      width: 7px; height: 7px; border-radius: 50%; flex: none;
+      background: #c9a15e; box-shadow: 0 0 8px rgba(201, 161, 94, .9);
+    }
+    .cap.rest .cap-dot { background: #7fa89a; box-shadow: 0 0 8px rgba(127, 168, 154, .9); }
+    /* 交互元素必须显式声明 no-drag，否则系统拖动会把点击吞掉 */
+    .cap-expand, .cap-x { -webkit-app-region: no-drag; }
+    .cap-expand {
+      flex: 1 1 auto; min-width: 0; max-width: 84px;
+      display: block; text-align: left; padding: 2px 3px; margin: 0;
+      border: none; border-radius: 5px; background: transparent;
+      color: #e8c98a; font-family: inherit; font-size: 12px; letter-spacing: 1px;
+      overflow: hidden; white-space: nowrap; text-overflow: ellipsis; cursor: pointer;
+    }
+    .cap-expand:hover { background: rgba(201, 161, 94, .18); }
+    .cap-time {
+      margin-left: auto; flex: none; min-width: 44px; text-align: right;
+      font-variant-numeric: tabular-nums; font-size: 13px; letter-spacing: .5px;
+    }
+    .cap.rest .cap-time { color: #a9c6bb; }
+    .cap-x {
+      flex: none; width: 20px; height: 20px; border-radius: 50%;
+      border: none; background: transparent; color: #8494a5;
+      cursor: pointer; font-size: 11px; line-height: 20px; padding: 0;
+    }
+    .cap-x:hover { background: rgba(176, 85, 76, .4); color: #ecd8d4; }
+  </style>
+</head>
+<body>
+  <div class="cap" id="cap" title="按住拖动 · 点事项名回到主窗 · ✕ 退出置顶">
+    <span class="cap-dot"></span>
+    <button class="cap-expand" id="cap-expand" title="回到主窗（保持浮窗置顶）"><span id="cap-mod">光阴蛊</span></button>
+    <span class="cap-time" id="cap-time">00:00</span>
+    <button class="cap-x" id="cap-x" title="退出置顶并恢复主窗">✕</button>
+  </div>
+  <script src="capsule-renderer.js"></script>
+</body>
+</html>

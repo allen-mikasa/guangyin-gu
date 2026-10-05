@@ -1,0 +1,60 @@
+{
+  "name": "guangyin-gu",
+  "productName": "光阴蛊",
+  "version": "1.7.1",
+  "description": "考公自习计时 · 光阴长河记录",
+  "main": "main.js",
+  "author": "光阴蛊",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "test": "node tests/river-stats.test.js && node tests/heatmap-structure.test.js && node tests/pip-window.test.js && node tests/settings-ring.test.js && node tests/ring-segments.test.js && node tests/past-search.test.js",
+    "dist": "electron-builder --win nsis portable",
+    "pack": "electron-builder --win --dir",
+    "build:win": "node scripts/build.js"
+  },
+  "devDependencies": {
+    "electron": "31.7.7",
+    "electron-builder": "24.13.3",
+    "jimp": "^0.22.12"
+  },
+  "build": {
+    "appId": "com.guangyin.gu",
+    "productName": "光阴蛊",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "backend.js",
+      "pip.js",
+      "window-state.js",
+      "capsule-preload.js",
+      "src/**/*",
+      "build/icon.ico",
+      "build/icon.png",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "光阴蛊",
+      "artifactName": "光阴蛊-安装包-${version}.exe"
+    },
+    "portable": {
+      "artifactName": "光阴蛊-便携版-${version}.exe"
+    },
+    "compression": "maximum"
+  }
+}

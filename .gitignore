@@ -1,0 +1,25 @@
+# 依赖与打包产物
+node_modules/
+dist/
+dist-verify/
+
+# 本地备份与调试残留
+.backup/
+旧版备份/
+数据升级前备份/
+.smoke/
+build-log*.log
+*.tmp
+*.bak
+
+# 运行时产生的数据（记录保存在 %APPDATA%\光阴蛊\，不进仓库）
+guangyin-records.json
+guangyin-window.json
+guangyin-pip.log
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+*.lnk
